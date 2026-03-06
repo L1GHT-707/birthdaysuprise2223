@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family:Segoe UI, sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+text-align:center;
+position:relative;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:25px;
+max-width:600px;
+width:90%;
+border:3px solid transparent;
+box-shadow:0 0 25px #ff4f81,0 0 50px #fffacd;
+z-index:2;
+animation:floatCard 3s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+position:relative;
+}
+
+.card::before{
+content:"🎂";
+position:absolute;
+top:-15px;
+left:-15px;
+font-size:1.5em;
+}
+
+.card::after{
+content:"🎂";
+position:absolute;
+top:-15px;
+right:-15px;
+font-size:1.5em;
+}
+
+@keyframes floatCard{
+0%{transform:translateY(0);}
+100%{transform:translateY(-10px);}
+}
+
+@keyframes glow{
+0%{box-shadow:0 0 20px #ff4f81,0 0 40px #fffacd;}
+100%{box-shadow:0 0 35px #ff4f81,0 0 70px #fffacd;}
+}
+
+h1{
+font-size:3em;
+color:#fffacd;
+text-shadow:3px 3px 15px #ff4f81;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+background:white;
+color:#ff4f81;
+margin-top:20px;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffb6c1;
+color:white;
+}
+
+input{
+padding:12px;
+border-radius:15px;
+border:none;
+margin-top:15px;
+font-size:16px;
+width:80%;
+text-align:center;
+outline:none;
+}
+
+/* FLOATING EMOJIS */
+
+.float{
+position:absolute;
+bottom:-30px;
+animation:float 8s linear infinite;
+opacity:0.9;
+}
+
+@keyframes float{
+0%{transform:translateY(0) rotate(0deg);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh) rotate(360deg);opacity:0;}
+}
+
+/* CONFETTI */
+
+.confetti{
+position:absolute;
+top:-10px;
+width:8px;
+height:8px;
+opacity:0.9;
+pointer-events:none;
+z-index:3;
+border-radius:50%;
+animation-name:confettiFall;
+animation-timing-function:linear;
+}
+
+@keyframes confettiFall{
+0%{transform:translateY(-10px) rotate(0deg);}
+100%{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* PHASE 1 LAYOUT */
+
+.phase1-container{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+}
+
+.phase1-left-container{
+position:absolute;
+left:60px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.phase1-right-container{
+position:absolute;
+right:60px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+img{
+max-width:250px;
+border-radius:15px;
+margin-top:8px;
+}
+
+/* PHASE 2 GALLERY */
+
+.slider{
+position:relative;
+height:450px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+}
+
+#galleryImage{
+max-width:400px;
+border-radius:15px;
+margin-top:20px;
+transition: all 1s ease-in-out;
+}
+
+/* BIG SIDE GIFS */
+
+.side-gif{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+z-index:1;
+}
+
+#leftGif{ left:50px; width:550px; }
+#rightGif{ right:50px; width:300px; }
+
+#lilyGif{ left:50px; width:300px; display:none; }
+#kinderGif{ right:50px; width:300px; display:none; }
+
+#jawlineGif{ left:50px; width:300px; display:none; }
+#donutGif{ right:50px; width:300px; display:none; }
+
+/* animations */
+
+.slide-left{
+animation:slideLeft 1s forwards;
+}
+
+@keyframes slideLeft{
+0%{transform:translateX(100%) translateY(-50%); opacity:0;}
+100%{transform:translateX(0) translateY(-50%); opacity:1;}
+}
+
+.fade-in{
+animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+0%{opacity:0;}
+100%{opacity:1;}
+}
+
+.caption{
+margin-top:18px;
+font-size:22px;
+color:#fffacd;
+text-shadow:2px 2px 10px #ff4f81;
+}
+
+.above-caption{
+margin-bottom:12px;
+font-size:26px;
+color:#fffacd;
+text-shadow:2px 2px 10px #ff4f81;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="border.gif" id="leftGif" class="side-gif" style="display:none;">
+<img src="aussie.gif" id="rightGif" class="side-gif" style="display:none;">
+
+<img src="lily.gif" id="lilyGif" class="side-gif">
+<img src="kinder.gif" id="kinderGif" class="side-gif">
+
+<img src="jawline.gif" id="jawlineGif" class="side-gif">
+<img src="donut.gif" id="donutGif" class="side-gif">
+
+<!-- PHASE 1 -->
+
+<div class="phase1-container" id="phase1">
+
+<div class="phase1-left-container">
+<img src="avlina.jpg">
+<img src="plotting.gif">
+</div>
+
+<div class="card">
+
+<h1>HAPPY BIRTHDAY TO THE PRETTIEST GIRL IN THE WORLD</h1>
+
+<p><strong>PASSWORD: MS. AVLINA EVANTHIKAS BIRTHDATE (DD/MM/YY)</strong></p>
+
+<input type="text" id="passwordInput">
+
+<br>
+
+<button onclick="checkPassword()">Unlock 🎁</button>
+
+<p id="wrong" style="color:#ffcccc;"></p>
+
+</div>
+
+<div class="phase1-right-container">
+<img src="avlina2.jpg">
+<img src="age.gif">
+</div>
+
+</div>
+
+<!-- PHASE 2 -->
+
+<div class="card" id="phase2" style="display:none">
+
+<div class="slider">
+
+<div>
+<p id="aboveText" class="above-caption">LITTLE ANGEL</p>
+<img id="galleryImage" src="avlina3.jpg">
+<p id="imageText" class="caption">AN ANGEL WAS BORN</p>
+</div>
+
+</div>
+
+<button id="galleryNext" onclick="nextImage()">NEXT ❤️</button>
+<button id="phaseNext" onclick="nextPhase(2)" style="display:none;">Next 🎂</button>
+
+</div>
+
+<!-- PHASE 3 -->
+
+<div class="card" id="phase3" style="display:none">
+
+<h1>🎂 Surprise ❤️</h1>
+
+<p>Happy Birthday beautiful! You make my world brighter ❤️</p>
+
+<img src="avlina9.jpg">
+
+</div>
+
+<script>
+
+const emojis=["❤️","🎂","🎈"];
+
+function createFloat(){
+const el=document.createElement("div");
+el.classList.add("float");
+el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+el.style.left=Math.random()*100+"vw";
+el.style.fontSize=(30+Math.random()*30)+"px";
+el.style.animationDuration=(5+Math.random()*4)+"s";
+document.body.appendChild(el);
+setTimeout(()=>{el.remove()},9000);
+}
+
+setInterval(createFloat,300);
+
+function createConfetti(){
+for(let i=0;i<30;i++){
+const conf=document.createElement("div");
+conf.classList.add("confetti");
+conf.style.left=Math.random()*100+"vw";
+conf.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
+conf.style.width=conf.style.height=(5+Math.random()*10)+"px";
+conf.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(conf);
+setTimeout(()=>{conf.remove()},6000);
+}
+}
+
+setInterval(()=>{
+if(document.getElementById("phase1").style.display!=="none"){
+createConfetti();
+}
+},500);
+
+function checkPassword(){
+const input=document.getElementById("passwordInput").value;
+const correct="13/3/2008";
+
+if(input===correct){
+document.getElementById("phase1").style.display="none";
+document.getElementById("phase2").style.display="block";
+
+document.getElementById("leftGif").style.display="block";
+document.getElementById("rightGif").style.display="block";
+}
+else{
+document.getElementById("wrong").innerText="Incorrect password! Try again.";
+}
+}
+
+function nextPhase(current){
+document.getElementById("phase"+current).style.display="none";
+document.getElementById("phase"+(current+1)).style.display="block";
+}
+
+let images=[
+"avlina3.jpg",
+"avlina4.jpg",
+"avlina5.jpg",
+"avlina6.jpg",
+"avlina7.jpg",
+"avlina8.jpg"
+];
+
+let aboveCaptions=[
+"LITTLE ANGEL",
+"GROWN ANGEL",
+"SIGMA",
+"MONKEY",
+"NONCHALANT TAMILIAN",
+"DWARF"
+];
+
+let captions=[
+"AN ANGEL WAS BORN",
+"INTELLIGENCE REMAINED THE SAME",
+"FLEXING HER JAWLINE OUT HERE",
+"WOW DA WHAT A SMILE HEHEHE",
+"TOO MUCH AURA",
+"5'3 ASS THINKS SHES TALL"
+];
+
+let index=0;
+
+function nextImage(){
+
+const galleryImage=document.getElementById("galleryImage");
+const imageText=document.getElementById("imageText");
+const aboveText=document.getElementById("aboveText");
+
+index++;
+
+document.getElementById("leftGif").style.display="none";
+document.getElementById("rightGif").style.display="none";
+document.getElementById("lilyGif").style.display="none";
+document.getElementById("kinderGif").style.display="none";
+document.getElementById("jawlineGif").style.display="none";
+document.getElementById("donutGif").style.display="none";
+
+if(index < images.length){
+
+galleryImage.src=images[index];
+imageText.innerText=captions[index];
+aboveText.innerText=aboveCaptions[index];
+
+galleryImage.className="";
+
+if(index<=2){
+galleryImage.classList.add("slide-left");
+}else{
+galleryImage.classList.add("fade-in");
+}
+
+if(index===1){
+document.getElementById("lilyGif").style.display="block";
+document.getElementById("kinderGif").style.display="block";
+}
+
+if(index===2){
+document.getElementById("jawlineGif").style.display="block";
+document.getElementById("donutGif").style.display="block";
+}
+
+}
+else{
+
+document.getElementById("galleryNext").style.display="none";
+document.getElementById("phaseNext").style.display="inline-block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
